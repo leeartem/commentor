@@ -6,25 +6,21 @@ use Rakit\Validation\Validator;
 
 class Validate
 {
-    static public function validate($request)
+    static public function validate(array $request): bool
     {
         $validator = new Validator;
 
         $validation = $validator->validate($request, [
-            'name'                  => 'required',
-            'email'                 => 'required|email',
-            'title'              => 'required|min:6',
-            'text'              => 'required|min:10',
+            'name' => 'required',
+            'email' => 'required|email',
+            'title' => 'required',
+            'text' => 'required',
         ]);
 
         if ($validation->fails()) {
-            $errors = $validation->errors();
-            echo "<pre>";
-            print_r($errors->firstOfAll());
-            echo "</pre>";
-            return $errors->firstOfAll();
+            return false;
         } else {
-            return [];
+            return true;
         }
     }
 }

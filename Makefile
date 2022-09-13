@@ -1,5 +1,5 @@
 run:
-	docker-compose up --build -d && docker-compose run --rm composer i && cd src/frontend && npm run dev
+	docker-compose up --build -d && docker-compose run --rm composer i && sleep 3 && docker-compose run --rm php vendor/bin/phinx migrate
 stop:
 	docker-compose stop
 migrate:

@@ -21,23 +21,21 @@ services:
         - mysql
       networks:
         - commentor
-  frontend:
-    build:
-      context: ./dockerfiles
-      dockerfile: nginx.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: frontend
-    # ports:
-    #   - 8080:8080
-    volumes:
-      - ./src/frontend:/var/www/html/frontend:delegated
-    # depends_on:
-    #   - php
-    #   - mysql
-    networks:
-      - commentor
+
+  # frontend:
+  #   build:
+  #     context: ./dockerfiles
+  #     dockerfile: nginx.dockerfile
+  #     args:
+  #       - UID=${UID:-1000}
+  #       - GID=${GID:-1000}
+  #   container_name: frontend
+  #   # ports:
+  #   #   - 8080:8080
+  #   volumes:
+  #     - ./src/frontend:/var/www/html/frontend:delegated
+  #   networks:
+  #     - commentor
   
   mysql:
     image: mariadb:10.6
@@ -51,7 +49,6 @@ services:
       MYSQL_USER: 'test'
       MYSQL_PASSWORD: 'test'
       MYSQL_ROOT_PASSWORD: 'test'
-      # SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
       - 'mysql:/var/lib/mysql'

@@ -15,23 +15,17 @@ class CommentController extends Controller
     }
     
     public function store(Request $request)
-    {
-        // header('Access-Control-Allow-Origin: *');
-        // header('Access-Control-Allow-Methods: GET, POST');
-        // header("Access-Control-Allow-Headers: X-Requested-With");
-        // header("Referrer-Policy: same-origin");
-        
-        $valdation = Validate::validate($request->request->all());
+    {        
+        $validated = Validate::validate($request->request->all());
+
+        var_dump($validated);
         
         
-        if (!empty($valdation)) {
+        if (!$validated) {
             $response = new Response(
                 'Error',
                 Response::HTTP_FORBIDDEN,
-                [
-                    'content-type' => 'application/json',
-                    // 'Access-Control-Allow-Origin' => '*',
-                ]
+                ['content-type' => 'application/json']
             );
             return $response->send();
         }
@@ -41,12 +35,7 @@ class CommentController extends Controller
         $response = new Response(
             'Ok',
             Response::HTTP_OK,
-            [
-                'content-type' => 'application/json',
-                // 'Access-Control-Allow-Origin' => '*',
-                // 'Access-Control-Allow-Methods' => 'GET, POST',
-                // 'Access-Control-Allow-Headers' => 'X-Requested-With',
-            ]
+            ['content-type' => 'application/json']
         );
 
         return $response->send();
@@ -55,17 +44,13 @@ class CommentController extends Controller
     public function get(Request $request)
     {
         $comment = new Comment();
-        $r = $comment->get();
+        $r = json_encode($comment->get());
 
         $response = new Response(
-            json_encode($r),
+            $r,
             Response::HTTP_OK,
-            [
-                'content-type' => 'application/json',
-                // 'Access-Control-Allow-Origin' => '*',
-            ]
+            ['content-type' => 'application/json']
         );
-        // $response->headers->set('Content-Type', 'text/plain');
         return $response->send();
     }
 }

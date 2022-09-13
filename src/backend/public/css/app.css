@@ -64,3 +64,22 @@ p {
   font-weight: bold;
   line-height: 1.5;
 }
+span[role="alert"] {
+  color: #ff1717;
+  font-size: .8rem;
+}
+.social {
+  display: flex;
+  grid-gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 8rem;
+}
+.social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social a img {
+  width: 100%;
+  max-width: 20px;
+}

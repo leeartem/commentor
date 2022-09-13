@@ -23,36 +23,6 @@ abstract class Entity {
         }
     }
 
-    // public function save() {
-    //     $class = new \ReflectionClass($this);
-    //     $tableName = '';
-    
-    //     if ($this->tableName != '') {
-    //         $tableName = $this->tableName;
-    //     } else {
-    //         $tableName = strtolower($class->getShortName());
-    //     }
-
-    //     $propsToImplode = [];
-    //     foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
-    //         $propertyName = $property->getName();
-    //         if ($propertyName!='id') $propsToImplode[] = '`'.$propertyName.'` = "'.$this->{$propertyName}.'"';
-    //     }
-
-    //     $setClause = implode(',',$propsToImplode);
-    //     $sqlQuery = '';
-
-    //     if ($this->id > 0) {
-    //         $sqlQuery = 'UPDATE `'.$tableName.'` SET '.$setClause.' WHERE id = '.$this->id;
-    //     } else {
-    //         $sqlQuery = 'INSERT INTO `'.$tableName.'` SET '.$setClause.'';
-    //     }
-        
-    //     $result = $this->db->exec($sqlQuery);
-        
-    //     return $result;
-    // }
-
     public function create(array $data) {
         $tableName = $this->tableName;
 

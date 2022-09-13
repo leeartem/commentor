@@ -64,12 +64,6 @@ export default {
         title: 'Cool title 2',
         text: 'Super mega comment',
     },
-    // comment: {
-    //     name: '',
-    //     email: '',
-    //     title: '',
-    //     text: '',
-    // },
     }),
   methods: {
     getList() {

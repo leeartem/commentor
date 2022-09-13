@@ -13,8 +13,8 @@
       
       <nav class="navbar container" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-            <img src="https://www.nicepng.com/png/detail/372-3728263_messages-comments-comment-icon-vector-png.png" width="112" height="28" class="mr-3">
+            <a class="navbar-item" href="/">
+            <img src="/images/logo.png" width="112" height="28" class="mr-3">
             <span>ComMentor</span>
             </a>
 
@@ -110,7 +110,7 @@
         <div class="comments-list">
           <div class="comment" v-for="(comment, index) in this.comments">
                 <div class="comment-body">
-                    <p class="comment-title">${ comment.title }</p>
+                    <p class="comment-title">${comment.title}</p>
                     <p class="comment-text">${comment.text}</p>
                 </div>
                 <div class="comment-meta">
@@ -124,6 +124,21 @@
             </div>
         </div>
     </div>
+    <footer>
+      <div class="container">
+        <div class="social">
+          <a href="https://www.youtube.com/channel/UCwQVupjziD6iSnwZO1ITN5g" target="_blank">
+            <img src="/images/yt.svg" alt="">
+          </a>
+          <a href="https://www.linkedin.com/company/andata" target="_blank">
+            <img src="/images/linkedin.svg" alt="">
+          </a>
+          <a href="https://andata.ru/rss-feed-364280842551.xml" target="_blank">
+            <img src="/images/rss.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </footer>
   </div>
 
     <script src="https://unpkg.com/vue@next"></script>
