@@ -1,0 +1,114 @@
+version: '3'
+
+networks:
+  commentor:
+
+services:
+  backend:
+      build:
+        context: ./dockerfiles
+        dockerfile: nginx.dockerfile
+        args:
+          - UID=${UID:-1000}
+          - GID=${GID:-1000}
+      container_name: backend
+      ports:
+        - 8080:8080
+      volumes:
+        - ./src/backend:/var/www/html/backend:delegated
+      depends_on:
+        - php
+        - mysql
+      networks:
+        - commentor
+  frontend:
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    container_name: frontend
+    ports:
+      - 80:80
+    volumes:
+      - ./src/frontend:/var/www/html/frontend:delegated
+    # depends_on:
+    #   - php
+    #   - mysql
+    networks:
+      - commentor
+  
+  mysql:
+    image: mariadb:10.6
+    container_name: 'mysql'
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'test'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
+      MYSQL_ROOT_PASSWORD: 'test'
+      # SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    networks:
+      - commentor
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 3000M
+      MEMORY_LIMIT: 10000M
+      MAX_EXECUTION_TIME: 999999
+    restart: always
+    networks:
+      - commentor
+    ports:
+      - 8081:80
+
+  php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    container_name: php
+    volumes:
+      - ./src/backend:/var/www/html/backend:delegated
+    networks:
+      - commentor
+
+  composer:
+    build:
+      context: ./dockerfiles
+      dockerfile: composer.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    container_name: composer
+    volumes:
+      - ./src/backend:/var/www/html/backend
+    working_dir: /var/www/html/backend
+    depends_on:
+      - php
+    user: commentor
+    entrypoint: ['composer', '--ignore-platform-reqs']
+    networks:
+      - commentor
+
+volumes:
+  mysql:
+    driver: local
