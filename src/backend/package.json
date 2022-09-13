@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "vue": "^3.2.39",
-    "vue-axios": "^3.4.1"
-  }
-}
