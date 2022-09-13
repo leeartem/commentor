@@ -73,7 +73,7 @@ export default {
     }),
   methods: {
     getList() {
-      this.axios.get('http://127.0.0.1:8080/comments')
+      this.axios.get('http://127.0.0.1/comments')
         .then((response) => {
             this.comments = response.data
             console.log(response.data)
@@ -81,12 +81,13 @@ export default {
     },
     submitForm() {
         const headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Origin': '*',
+            // 'Content-Type': 'application/json',
+            // 'Content-Type': 'multipart/form-data',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
         }
         console.log(this.comment);
-        this.axios.post('http://127.0.0.1:8080/comments', this.comment, {
-            })
+        this.axios.post('http://127.0.0.1/comments', this.comment, {headers:headers})
         .then((response) => {
             console.log(response.data)
             this.getList()

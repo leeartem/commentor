@@ -16,25 +16,33 @@ class CommentController extends Controller
     
     public function store(Request $request)
     {
-        header('Access-Control-Allow-Origin: *');
+        $response = new Response(
+            'Ok',
+            Response::HTTP_OK,
+            [
+                'content-type' => 'application/json',
+            ]
+        );
+        return $response->send();
+        // header('Access-Control-Allow-Origin: *');
         // header('Access-Control-Allow-Methods: GET, POST');
         // header("Access-Control-Allow-Headers: X-Requested-With");
-        header("Referrer-Policy: same-origin");
+        // header("Referrer-Policy: same-origin");
         
         $valdation = Validate::validate($request->request->all());
         
         
-        if (!empty($valdation)) {
-            $response = new Response(
-                'Error',
-                Response::HTTP_FORBIDDEN,
-                [
-                    'content-type' => 'application/json',
-                    'Access-Control-Allow-Origin' => '*',
-                ]
-            );
-            return $response->send();
-        }
+        // if (!empty($valdation)) {
+        //     $response = new Response(
+        //         'Error',
+        //         Response::HTTP_FORBIDDEN,
+        //         [
+        //             'content-type' => 'application/json',
+        //             // 'Access-Control-Allow-Origin' => '*',
+        //         ]
+        //     );
+        //     return $response->send();
+        // }
 
         $comment = new Comment();
         $comment->create($request->request->all());
@@ -43,16 +51,11 @@ class CommentController extends Controller
             Response::HTTP_OK,
             [
                 'content-type' => 'application/json',
-                'Access-Control-Allow-Origin' => '*',
+                // 'Access-Control-Allow-Origin' => '*',
                 // 'Access-Control-Allow-Methods' => 'GET, POST',
                 // 'Access-Control-Allow-Headers' => 'X-Requested-With',
             ]
         );
-
-header("Access-Control-Allow-Origin: *");
-
-
-        
 
         return $response->send();
     }
@@ -67,7 +70,7 @@ header("Access-Control-Allow-Origin: *");
             Response::HTTP_OK,
             [
                 'content-type' => 'application/json',
-                'Access-Control-Allow-Origin' => '*',
+                // 'Access-Control-Allow-Origin' => '*',
             ]
         );
         // $response->headers->set('Content-Type', 'text/plain');
