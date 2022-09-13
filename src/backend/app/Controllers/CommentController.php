@@ -16,14 +16,6 @@ class CommentController extends Controller
     
     public function store(Request $request)
     {
-        $response = new Response(
-            'Ok',
-            Response::HTTP_OK,
-            [
-                'content-type' => 'application/json',
-            ]
-        );
-        return $response->send();
         // header('Access-Control-Allow-Origin: *');
         // header('Access-Control-Allow-Methods: GET, POST');
         // header("Access-Control-Allow-Headers: X-Requested-With");
@@ -32,17 +24,17 @@ class CommentController extends Controller
         $valdation = Validate::validate($request->request->all());
         
         
-        // if (!empty($valdation)) {
-        //     $response = new Response(
-        //         'Error',
-        //         Response::HTTP_FORBIDDEN,
-        //         [
-        //             'content-type' => 'application/json',
-        //             // 'Access-Control-Allow-Origin' => '*',
-        //         ]
-        //     );
-        //     return $response->send();
-        // }
+        if (!empty($valdation)) {
+            $response = new Response(
+                'Error',
+                Response::HTTP_FORBIDDEN,
+                [
+                    'content-type' => 'application/json',
+                    // 'Access-Control-Allow-Origin' => '*',
+                ]
+            );
+            return $response->send();
+        }
 
         $comment = new Comment();
         $comment->create($request->request->all());

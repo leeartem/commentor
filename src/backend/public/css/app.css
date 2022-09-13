@@ -1,0 +1,66 @@
+.navbar-brand .navbar-item img {
+    width: auto;
+    max-width: 100%;
+  }
+  .navbar-brand .navbar-item {
+    font-size: 1.6rem;
+    color: #000;
+    font-weight: bold;
+  }
+  h1, h2, p, .title {
+    color: #000;
+  }
+  
+  .comment {
+    background-color: #eee;
+    margin-bottom: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 13px;
+    overflow: hidden;
+  }
+  .comment-meta {
+    margin-top: .3rem;
+  }
+  .comment-date {
+    color: #666;
+    font-size: .8rem;
+    margin-bottom: 0;
+  }
+  .comment-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+p {
+  font-size: 1.1;
+  line-height: 1.6;
+  margin-bottom: .5rem;
+  color: #000;
+}
+.post div {
+  margin-bottom: 1rem;
+}
+.post img {
+  max-width: 80%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.post p strong {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+}
+.subtitle {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.125;
+  margin-bottom: .5rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.5;
+}

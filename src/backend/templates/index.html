@@ -1,159 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <link rel="icon" href="/favicon.ico" />
     <title>Commentor</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
-    
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/app.css">
   </head>
-  <body class="bg-light">
-    
-<div class="container">
-  <main>
-    <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-      <h2>Checkout form</h2>
-    </div>
+  <body>
+    <div id="app">
+      
+      <nav class="navbar container" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+            <img src="https://www.nicepng.com/png/detail/372-3728263_messages-comments-comment-icon-vector-png.png" width="112" height="28" class="mr-3">
+            <span>ComMentor</span>
+            </a>
 
-    <div class="row g-5">
-      <div class="col-md-12 col-lg-12">
-        <h4 class="mb-3">Comments</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+        </div>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="username" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
-              <div class="invalid-feedback">
-                  Your username is required.
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    </div>
                 </div>
-              </div>
             </div>
-
-            <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-            </div>
-
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required>
-                <option value="">Choose...</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
-              <div class="invalid-feedback">
-                Zip code required.
-              </div>
-            </div>
+        </div>
+    </nav>
+      <div class="container mt-5">
+        <h1 class="title">
+          How to be a mentor: 4 ways to change someone’s life
+        </h1>
+        <div class="post">
+          <div>
+          <div>
+          <p>Oprah Winfrey’s rags-to-riches story has changed the way many of us look at the world.&nbsp;</p>
+          <p>And that’s not just because her story is inspirational. It’s because she uses her story and life experience to mentor as many people as possible.</p>
+          <p>If you’ve thought of giving back, but you’re unsure how, taking someone under your wing may be just what you need.&nbsp;</p>
+          <p>Read on to learn how to be a mentor and what a mentor does.&nbsp;</p>
+          <p>We’ll also share the three most common types of mentors and how you can get started.</p>
           </div>
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-        </form>
+          </div>
+          <div><a id="does" data-hs-anchor="true"></a>
+          <h2 class="subtitle">What does a mentor do?</h2>
+          <div>
+          <p><strong>A mentor is a trusted advisor that offers support to someone who needs it (aka a ‘mentee’).&nbsp;</strong></p>
+          <p>Every mentoring relationship is different — some last for years while some last one coffee date. A long-term relationship may include a planned mentoring program. A short-term relationship may involve helping the mentee work through a specific problem.&nbsp;</p>
+          <p>For instance, a long-term relationship may include scheduled meetings where the mentor shares their experience, knowledge, and connections with the mentee.</p>
+          <p>And a short-term relationship may be a conversation about the mentee's career path.&nbsp;</p>
+          <p>In the end, mentors have three things in common. They motivate, inspire, and support. They give mentees the tools they need to achieve their goals and work through challenges.</p>
+          <p><img src="https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=1999&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png" alt="what-does-a-mentor-do-how-to-be-a-mentor" loading="lazy" style="width: 1999px; margin-left: auto; margin-right: auto; display: block;" width="1999" srcset="https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=1000&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png 1000w, https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=1999&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png 1999w, https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=2999&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png 2999w, https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=3998&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png 3998w, https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=4998&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png 4998w, https://www.betterup.com/hs-fs/hubfs/what-does-a-mentor-do-how-to-be-a-mentor.png?width=5997&amp;name=what-does-a-mentor-do-how-to-be-a-mentor.png 5997w" sizes="(max-width: 1999px) 100vw, 1999px"></p>
+          <p>They can be a role model, voice of reason, or a trusted resource that helps mentees grow professionally.&nbsp;</p>
+          <p>They value delivering support in a way that makes sense to the mentee. And they always keep the mentee’s best interest in mind.&nbsp;</p>
+          <p>Depending on the mentee’s needs, a mentor:</p>
+          <p><img src="https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=1999&amp;name=what-a-mentor-does-how-to-be-a-mentor.png" alt="what-a-mentor-does-how-to-be-a-mentor" loading="lazy" style="width: 1999px; margin-left: auto; margin-right: auto; display: block;" width="1999" srcset="https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=1000&amp;name=what-a-mentor-does-how-to-be-a-mentor.png 1000w, https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=1999&amp;name=what-a-mentor-does-how-to-be-a-mentor.png 1999w, https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=2999&amp;name=what-a-mentor-does-how-to-be-a-mentor.png 2999w, https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=3998&amp;name=what-a-mentor-does-how-to-be-a-mentor.png 3998w, https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=4998&amp;name=what-a-mentor-does-how-to-be-a-mentor.png 4998w, https://www.betterup.com/hs-fs/hubfs/what-a-mentor-does-how-to-be-a-mentor.png?width=5997&amp;name=what-a-mentor-does-how-to-be-a-mentor.png 5997w" sizes="(max-width: 1999px) 100vw, 1999px"></p>
+          </div>
+        </div>
       </div>
+        <h2 class="title mt-5 mb-3">Comments</h2>
+        <v-form @submit="submitForm" class="mb-5">
+            <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <v-field class="input" type="text" placeholder="" name="name" value="Artem" :rules="isRequired"></v-field>
+                <error-message name="name"></error-message>
+            </div>
+            </div>
+    
+            <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <v-field class="input" type="email" placeholder="" name="email" value="webxofficial@gmail.com" :rules="validateEmail"></v-field>
+                <error-message name="email"></error-message>
+            </div>
+            </div>
+    
+            <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <v-field class="input" type="text" placeholder="" name="title" value="Supa dupa" :rules="isRequired"></v-field>
+                <error-message name="title"></error-message>
+            </div>
+            </div>
+    
+            <div class="field">
+            <label class="label">Comment</label>
+            <div class="control">
+                <v-field class="input input-textarea" type="text" placeholder="" name="text" value="Sample text 228" :rules="isRequired"></v-field>
+                <error-message name="text"></error-message>
+            </div>
+            </div>
+    
+            <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link">Submit</button>
+            </div>
+            </div>
+        </v-form>
+        <div class="comments-list">
+          <div class="comment" v-for="(comment, index) in this.comments">
+                <div class="comment-body">
+                    <p class="comment-title">${ comment.title }</p>
+                    <p class="comment-text">${comment.text}</p>
+                </div>
+                <div class="comment-meta">
+                    <p class="comment-author" :class="comment.name">
+                        ${comment.name} • ${comment.email}
+                    </p>
+                    <p class="comment-date">
+                        ${comment.created_at}
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </main>
+  </div>
 
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–2021 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
-</div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vee-validate"></script>
+    <script src="/js/main.js"></script>
 
-      <script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
   </body>
 </html>
